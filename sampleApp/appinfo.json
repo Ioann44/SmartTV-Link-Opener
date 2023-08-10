@@ -1,0 +1,10 @@
+{
+  "id": "LinkOpener",
+  "version": "0.0.1",
+  "vendor": "Ioann's Corporation",
+  "type": "web",
+  "main": "index.html",
+  "title": "This app made up to open links from other devices",
+  "icon": "resouces/icon.png",
+  "largeIcon": "resouces/largeIcon.png"
+}
