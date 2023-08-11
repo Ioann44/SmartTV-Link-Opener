@@ -1,6 +1,6 @@
 // Установите адрес сервера, к которому будете делать запрос
-// const serverUrl = 'http://192.168.0.101:3000/';
-const serverUrl = 'http://192.168.0.66:3000/';
+const serverUrl = 'http://192.168.0.101:3000/';
+// const serverUrl = 'http://192.168.0.66:3000/';
 
 function getJson(urlSuff, callback) {
 	fetch(serverUrl + urlSuff)
@@ -60,5 +60,5 @@ var intervalId = setInterval(() => { getJson("moveImage", moveImage) }, 400);
 setTimeout(() => {
 	clearInterval(intervalId);
 	// getJson('', navigateToLink);
-	getJson('', navigateToLink_browser);
-}, 30000)
+	// getJson('', navigateToLink_browser);
+}, 10000)

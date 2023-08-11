@@ -10,7 +10,8 @@ app.use((req, res, next) => {
 });
 // Get link
 app.get('/', (req, res) => {
-    res.json({ link: 'https://github.com/Ioann44' });
+    // res.json({ link: 'https://github.com/Ioann44' });
+    res.json({ link: 'https://ve.lordfilm.film/' });
 });
 
 // Get move direction
