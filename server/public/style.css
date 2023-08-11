@@ -1,0 +1,37 @@
+  body {
+    background-color: #111;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 3vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .container {
+    text-align: center;
+  }
+  
+  input {
+    padding: 4vh;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    width: 50vw;
+    font-size: 3vh;
+  }
+  
+  button {
+    margin-top: 1vh;
+    padding: 4vh 6vw;
+    background-color: #555;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 3vh;
+  }
