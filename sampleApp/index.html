@@ -15,12 +15,6 @@
 			margin: 0;
 		}
 
-		div2 {
-			position: absolute;
-			height: 50%;
-			width: 100%;
-		}
-
 		h1 {
 			display: table-cell;
 			text-align: center;
@@ -35,13 +29,22 @@
 
 		.center-button {
 			display: inline-block;
-			padding: 20px 30px;
 			background-color: #3498db;
+			width: 50vw;
+			height: 15vh;
 			color: white;
 			border: none;
 			border-radius: 5px;
 			cursor: pointer;
-			font-size: 16px;
+			font-size: 32px;
+		}
+
+		.cat {
+			position: absolute;
+			width: 30vw;
+			top: 0px;
+			left: 0px;
+			z-index: -1;
 		}
 	</style>
 </head>
@@ -52,12 +55,17 @@
 <script src="src/index.js" defer></script>
 
 <body>
+
 	<div>
 		<h1>Hello, World!</h1>
+		<!-- <p style="color:#FF0000; position: absolute; top: 212px; font-size: 32px; z-index: -1;"><b>Hello, World!</b></p> -->
 	</div>
 	<div>
-		<button class="center-button" onclick="makeHttpRequest(serverUrl, navigateToLink);">Open link</button>
+		<button class="center-button" onclick="getJson('', navigateToLink);">Open link</button>
+		<!-- <button class="center-button" onclick="makeLinkRequest(serverUrl, navigateToLink_browser);">Open link</button> -->
 	</div>
+	<img src="./resouces/cat.png" class="cat" />
+
 </body>
 
 </html>

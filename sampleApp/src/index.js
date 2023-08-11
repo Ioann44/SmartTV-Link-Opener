@@ -1,28 +1,64 @@
 // Установите адрес сервера, к которому будете делать запрос
-const serverUrl = 'http://192.168.0.101:3000/';
+// const serverUrl = 'http://192.168.0.101:3000/';
+const serverUrl = 'http://192.168.0.66:3000/';
+
+function getJson(urlSuff, callback) {
+	fetch(serverUrl + urlSuff)
+		.then(response => {
+			if (!response.ok) {
+				throw new Error(`Network response was not ok: ${response.status}`);
+			}
+			return response.json();
+		})
+		.then(data => { callback(data); })
+		.catch(error => { console.error(error); })
+}
 
 // Получаем ссылку из ответа сервера и переходим по ней
-function navigateToLink(link) {
-	if (link) {
-		window.location.href = link;
+function navigateToLink(linkJson) {
+	if (linkJson.link) {
+		window.location.href = linkJson.link;
 	} else {
 		console.log('Сервер не вернул ссылку.');
 	}
 }
 
-// Функция для выполнения HTTP-запроса
-function makeHttpRequest(url, callback) {
-	const xhr = new XMLHttpRequest();
-	xhr.onreadystatechange = function () {
-		if (xhr.readyState === 4) {
-			if (xhr.status === 200) {
-				const response = JSON.parse(xhr.responseText);
-				callback(response.link);
-			} else {
-				console.log('Ошибка запроса:', xhr.statusText);
-			}
-		}
-	};
-	xhr.open('GET', url, true);
-	xhr.send();
+// With open browser version
+function navigateToLink_browser(linkJson) {
+	if (linkJson.link)
+		webOS.service.request("luna://com.webos.applicationManager", {
+			method: "launch",
+			parameters: {
+				id: "com.webos.app.browser",
+				params: {
+					target: linkJson.link,
+				},
+			},
+			onSuccess: (res) => {
+				console.log("Browser open success. ", res);
+			},
+			onFailure: (res) => {
+				console.log("Browser open fail. ", res);
+			},
+		});
 }
+
+function moveImage(directionJson) {
+	if (directionJson.x || directionJson.y) {
+		var image = document.getElementsByClassName("cat")[0];
+
+		var rect = image.getBoundingClientRect();
+		var currentXInVw = (rect.left / window.innerWidth) * 100;
+		var currentYInVh = (rect.top / window.innerHeight) * 100;
+
+		image.style.left = `${currentXInVw + directionJson.x}vw`;
+		image.style.top += `${currentYInVh + directionJson.y}vh`;
+	}
+};
+
+var intervalId = setInterval(() => { getJson("moveImage", moveImage) }, 400);
+setTimeout(() => {
+	clearInterval(intervalId);
+	// getJson('', navigateToLink);
+	getJson('', navigateToLink_browser);
+}, 30000)
