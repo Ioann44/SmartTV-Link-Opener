@@ -10,7 +10,6 @@ All these scripts are running from ./CLI/bin, it works without installation.
 ./ares-setup-device --list
 # Allows install apps on TV
 ./ares-novacom --device kitchen_tv --getkey
-./ares-launch -s 23 ../../tvApp
 ```
 ### Install app on TV
 ```bash
@@ -20,15 +19,26 @@ All these scripts are running from ./CLI/bin, it works without installation.
 # Install it on TV
 ./ares-install -d kitchen_tv link-opener_0.0.1_all.ipk
 ```
-Launch it manually after installation
+Launch it manually after installation.
+
+Or you can start the app in one line without previous commands.
+```bash
+# Launch your application, *package and *install is not needed
+ares-launch -d kitchen_tv ../../tvApp
+```
 ## Launch on simulator
 Keep in mind that you can't launch browser on simulator by using js code
 ```bash
 ./ares-launch -s 23 ../../tvApp
 ```
 ## Server start
-From server folder
+From server folder.
+
+Node v18.17.1 is used.
 ```bash
+# Only on first run
+npm install
+# Start server
 node main
 ```
 This starts nodejs server, necessary for most of the application functionality, can be replased by any other, static ip preffered though.
