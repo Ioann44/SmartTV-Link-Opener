@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 
 // Get move direction
 app.get('/moveImage/', (req, res) => {
-    res.json({ x: 1, y: 0 });
+    res.json({ x: 0.1, y: 0 });
 });
 
 

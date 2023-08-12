@@ -56,9 +56,9 @@ function moveImage(directionJson) {
 	}
 };
 
-var intervalId = setInterval(() => { getJson("moveImage", moveImage) }, 400);
+var intervalId = setInterval(() => { getJson("moveImage", moveImage) }, 20);
 setTimeout(() => {
 	clearInterval(intervalId);
 	// getJson('', navigateToLink);
 	// getJson('', navigateToLink_browser);
-}, 10000)
+}, 6500)
