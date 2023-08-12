@@ -1,3 +1,5 @@
+# Smart TV Link Opener
+Application for fast opening links on TV. Current version needs a running server on static IP/domain.
 ## TV connection
 I don't think someone will do this, so scripts will be with my paths.
 
