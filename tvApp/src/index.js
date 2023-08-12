@@ -64,19 +64,7 @@ var linkInterval = setInterval(
 	},
 	1000);
 
-var request = webOS.service.request('luna://com.palm.connectionmanager', {
-	method: 'getStatus',
-	onSuccess: function (inResponse) {
-		console.log('Result: ' + JSON.stringify(inResponse));
-		// To-Do something
-	},
-	onFailure: function (inError) {
-		console.log('Failed to get network state');
-		console.log('[' + inError.errorCode + ']: ' + inError.errorText);
-		// To-Do something
-		return;
-	},
-});
+document.getElementById('changeLinkPage').innerText = `To change the link, go to: ${serverUrl.match('^(?:https?://)?(.+$)')[1]}`;
 
 const ipHeader = document.getElementById('ipHeader');
 webOSDev.connection.getStatus({
