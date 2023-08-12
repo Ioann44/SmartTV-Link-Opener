@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Ввод ссылки</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Ввод ссылки</h1>
+        <form>
+            <input id="linkInput" type="text" placeholder="Введите ссылку для телевизора">
+            <button id="sendButton" type="submit">Отправить</button>
+            <script>
+                const button = document.getElementById('sendButton');
+                const input = document.getElementById('linkInput');
+                button.addEventListener('click', () => {
+                    fetch('/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: { newLink: input.value }
+                    });
+                });
+            </script>
+        </form>
+    </div>
+</body>
+
+</html>

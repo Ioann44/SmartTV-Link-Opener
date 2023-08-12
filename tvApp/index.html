@@ -3,51 +3,7 @@
 
 <head>
 	<title>new app</title>
-	<style type="text/css">
-		body {
-			display: flex;
-
-			background-color: #202020;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			min-height: 100vh;
-			margin: 0;
-		}
-
-		h1 {
-			display: table-cell;
-			text-align: center;
-			vertical-align: middle;
-			color: #FFFFFF;
-		}
-
-		.center-content {
-			text-align: center;
-			margin-bottom: 20px;
-		}
-
-		.center-button {
-			display: inline-block;
-			background-color: #3498db;
-			width: 50vw;
-			height: 15vh;
-			color: white;
-			border: none;
-			border-radius: 5px;
-			cursor: pointer;
-			font-size: 32px;
-		}
-
-		.cat {
-			position: absolute;
-			width: 40vh;
-			border-radius: 2vh;
-			top: 0px;
-			left: 0px;
-			z-index: -1;
-		}
-	</style>
+	<link rel="stylesheet" href="./src/style.css">
 </head>
 
 <script src="webOSTVjs-1.2.4/webOSTV.js" charset="utf-8"></script>
@@ -58,14 +14,15 @@
 <body>
 
 	<div>
-		<h1>Hello, World!</h1>
+		<h1 id="ipHeader">IP not received</h1>
 		<!-- <p style="color:#FF0000; position: absolute; top: 212px; font-size: 32px; z-index: -1;"><b>Hello, World!</b></p> -->
 	</div>
 	<div>
-		<button class="center-button" onclick="getJson('', navigateToLink_browser);">Open link</button>
+		<button class="center-button" onclick="navigateToLink_browser();">Open link</button>
 		<!-- <button class="center-button" onclick="makeLinkRequest(serverUrl, navigateToLink_browser);">Open link</button> -->
 	</div>
-	<div style="box-shadow: inset -10px -10px 10px 20px white;">
+	<div id="linkValue" class="linkDiv">https://github.com/Ioann44</div>
+	<div>
 		<img src="./resouces/cat.png" class="cat" />
 	</div>
 

@@ -20,12 +20,6 @@ All these scripts are running from ./CLI/bin, it works without installation.
 ./ares-install -d kitchen_tv link-opener_0.0.1_all.ipk
 ```
 Launch it manually after installation.
-
-Or you can start the app in one line without previous commands.
-```bash
-# Launch your application, *package and *install is not needed
-ares-launch -d kitchen_tv ../../tvApp
-```
 ## Launch on simulator
 Keep in mind that you can't launch browser on simulator by using js code
 ```bash

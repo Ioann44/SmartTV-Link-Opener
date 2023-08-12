@@ -1,6 +1,5 @@
 // Установите адрес сервера, к которому будете делать запрос
 const serverUrl = 'http://192.168.0.101:3000/';
-// const serverUrl = 'http://192.168.0.66:3000/';
 
 function getJson(urlSuff, callback) {
 	fetch(serverUrl + urlSuff)
@@ -14,18 +13,9 @@ function getJson(urlSuff, callback) {
 		.catch(error => { console.error(error); })
 }
 
-// Получаем ссылку из ответа сервера и переходим по ней
-function navigateToLink(linkJson) {
-	if (linkJson.link) {
-		window.location.href = linkJson.link;
-	} else {
-		console.log('Сервер не вернул ссылку.');
-	}
-}
-
 // With open browser version
-function navigateToLink_browser(linkJson) {
-	if (linkJson.link)
+function navigateToLink_browser() {
+	if (link)
 		webOS.service.request("luna://com.webos.applicationManager", {
 			method: "launch",
 			parameters: {
@@ -56,9 +46,24 @@ function moveImage(directionJson) {
 	}
 };
 
-var intervalId = setInterval(() => { getJson("moveImage", moveImage) }, 20);
+var intervalId = setInterval(() => { getJson("moveImage", moveImage) }, 50);
 setTimeout(() => {
 	clearInterval(intervalId);
-	// getJson('', navigateToLink);
-	// getJson('', navigateToLink_browser);
-}, 6500)
+	// getJson('getLink', navigateToLink_browser);
+}, 10000)
+
+var link = 'https://github.com/Ioann44';
+
+var linkDiv = document.getElementById("linkValue");
+var linkInterval = setInterval(
+	() => {
+		getJson('getLink', (linkJson) => {
+			this.link = linkJson.link;
+			linkDiv.innerText = link;
+		});
+	},
+	1000);
+
+var ipConfig = webOS.service.network.getNetworkSettings();
+var ipAddress = ipConfig.wifi.ipv4;
+document.getElementById('ipHeader') = ipHeader.innerText = ipAddress;
