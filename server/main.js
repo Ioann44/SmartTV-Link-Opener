@@ -16,6 +16,7 @@ app.use(express.json());
 
 var link = 'https://github.com/Ioann44';
 
+// Entry point of UI to change link
 app.get('/', (req, res) => {
     fs.readFile('./pages/index.html', 'utf8', (err, content) => {
         if (err) {
@@ -26,6 +27,7 @@ app.get('/', (req, res) => {
     });
 })
 
+// Update link on the server
 app.post('/', (req, res) => {
     if (!req.body.newLink) {
         res.status(406).send('Link must be not empty')
@@ -35,18 +37,18 @@ app.post('/', (req, res) => {
     res.send('Data received successfully');
 });
 
-// Get link
+// Get link, stored on the server
 app.get('/getLink', (req, res) => {
     res.json({ link: link });
 });
 
-// Get move direction
+// Get move direction for cat image, not used now
 app.get('/moveImage/', (req, res) => {
     res.json({ x: 0.2, y: 0 });
 });
 
 
-// Слушаем порт 3000
+// Startup server on port 3000
 app.listen(3000, '0.0.0.0', () => {
     console.log('Сервер запущен на порту 3000');
 });

@@ -1,6 +1,7 @@
 // Установите адрес сервера, к которому будете делать запрос
 const serverUrl = 'http://192.168.0.101:3000/';
 
+// Cover over fetch get request
 function getJson(urlSuff, callback) {
 	fetch(serverUrl + urlSuff)
 		.then(response => {
@@ -33,6 +34,7 @@ function navigateToLink_browser() {
 		});
 }
 
+// Callback function to move cat image, not used now
 function moveImage(directionJson) {
 	if (directionJson.x || directionJson.y) {
 		var image = document.getElementsByClassName("cat")[0];
@@ -46,14 +48,16 @@ function moveImage(directionJson) {
 	}
 };
 
-var intervalId = setInterval(() => { getJson("moveImage", moveImage) }, 50);
-setTimeout(() => {
-	clearInterval(intervalId);
-	// getJson('getLink', navigateToLink_browser);
-}, 10000)
+// Move cat image
+// var intervalId = setInterval(() => { getJson("moveImage", moveImage) }, 50);
+// setTimeout(() => {
+// 	clearInterval(intervalId);
+// 	// getJson('getLink', navigateToLink_browser);
+// }, 10000)
 
 var link = 'https://github.com/Ioann44';
 
+// Update current link field on the page every second
 var linkDiv = document.getElementById("linkValue");
 var linkInterval = setInterval(
 	() => {
@@ -64,8 +68,11 @@ var linkInterval = setInterval(
 	},
 	1000);
 
+// Set hint where to find ui
 document.getElementById('changeLinkPage').innerText = `To change the link, go to: ${serverUrl.match('^(?:https?://)?(.+$)')[1]}`;
 
+// Set current TV ip of wifi once
+// Possible to check for wired (res.wired) connection and do it several times (subscribe: true)
 const ipHeader = document.getElementById('ipHeader');
 webOSDev.connection.getStatus({
 	onSuccess: function (res) {

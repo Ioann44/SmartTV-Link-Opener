@@ -36,3 +36,9 @@ npm install
 node main
 ```
 This starts nodejs server, necessary for most of the application functionality, can be replased by any other, static ip preffered though.
+## Server API
+You can access changing link on ```GET /``` path in browser.
+
+Set new link with ```POST /``` with json ```{newLink: <newValue>}```
+
+Check current stored link on ```GET /getLink```
