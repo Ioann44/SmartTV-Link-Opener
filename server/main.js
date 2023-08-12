@@ -27,6 +27,10 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
+    if (!req.body.newLink) {
+        res.status(406).send('Link must be not empty')
+        return;
+    }
     link = req.body.newLink;
     res.send('Data received successfully');
 });

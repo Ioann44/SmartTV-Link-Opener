@@ -21,7 +21,7 @@ function navigateToLink_browser() {
 			parameters: {
 				id: "com.webos.app.browser",
 				params: {
-					target: linkJson.link,
+					target: link,
 				},
 			},
 			onSuccess: (res) => {
@@ -64,6 +64,29 @@ var linkInterval = setInterval(
 	},
 	1000);
 
-var ipConfig = webOS.service.network.getNetworkSettings();
-var ipAddress = ipConfig.wifi.ipv4;
-document.getElementById('ipHeader') = ipHeader.innerText = ipAddress;
+var request = webOS.service.request('luna://com.palm.connectionmanager', {
+	method: 'getStatus',
+	onSuccess: function (inResponse) {
+		console.log('Result: ' + JSON.stringify(inResponse));
+		// To-Do something
+	},
+	onFailure: function (inError) {
+		console.log('Failed to get network state');
+		console.log('[' + inError.errorCode + ']: ' + inError.errorText);
+		// To-Do something
+		return;
+	},
+});
+
+const ipHeader = document.getElementById('ipHeader');
+webOSDev.connection.getStatus({
+	onSuccess: function (res) {
+		if (res.isInternetConnectionAvailable === true && res.wifi) {
+			ipHeader.innerText = res.wifi.ipAddress;
+		}
+	},
+	onFailure: function (res) {
+		// API calling error
+	},
+	subscribe: false
+});

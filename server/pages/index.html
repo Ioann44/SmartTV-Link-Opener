@@ -23,7 +23,7 @@
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: { newLink: input.value }
+                        body: JSON.stringify({ newLink: input.value })
                     });
                 });
             </script>
