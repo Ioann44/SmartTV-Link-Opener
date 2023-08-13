@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 // Update link on the server
 app.post('/', (req, res) => {
     if (!req.body.newLink) {
-        res.status(406).send('Link must be not empty')
+        res.status(406).send('Link must be not empty');
         return;
     }
     link = req.body.newLink;
@@ -47,6 +47,16 @@ app.get('/moveImage/', (req, res) => {
     res.json({ x: 0.2, y: 0 });
 });
 
+// Log to the server console
+app.post('/log', (req, res) => {
+    if (!req.body.message) {
+        console.log("Empty log message");
+        res.status(406).send('Message must be not empty');
+        return;
+    }
+    console.log(req.body.message);
+    res.send('Data received successfully');
+});
 
 // Startup server on port 3000
 app.listen(3000, '0.0.0.0', () => {

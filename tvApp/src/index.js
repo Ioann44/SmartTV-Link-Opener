@@ -14,6 +14,17 @@ function getJson(urlSuff, callback) {
 		.catch(error => { console.error(error); })
 }
 
+// Log to the server console
+function serverLog(message) {
+	fetch(serverUrl + 'log', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({ message: message })
+	});
+}
+
 // With open browser version
 function navigateToLink_browser() {
 	if (link)
@@ -84,4 +95,12 @@ webOSDev.connection.getStatus({
 		// API calling error
 	},
 	subscribe: false
+});
+
+// Handle OK keydown, necessary for remotes without pointing
+document.addEventListener("keydown", (event) => {
+	// serverLog(`KeyCode: ${event.keyCode}`);
+	if (event.keyCode === 13) {
+		navigateToLink_browser();
+	}
 });
