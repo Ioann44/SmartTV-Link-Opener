@@ -10,7 +10,7 @@ app.use((req, res, next) => {
     next();
 });
 // Set path with static assets
-app.use(express.static('public'));
+app.use(express.static(`${__dirname}/public`));
 // Set json middleware
 app.use(express.json());
 
@@ -18,7 +18,7 @@ var link = 'https://github.com/Ioann44';
 
 // Entry point of UI to change link
 app.get('/', (req, res) => {
-    fs.readFile('./pages/index.html', 'utf8', (err, content) => {
+    fs.readFile(`${__dirname}/pages/index.html`, 'utf8', (err, content) => {
         if (err) {
             res.status(500).send('Internal Server Error');
             return;
